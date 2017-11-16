@@ -1,0 +1,34 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 35px 20px;
+
+    &__title {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__inputs {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      border: 4px solid var(--loginInputBorder);
+
+      input {
+        all: unset;
+        padding: 10px 15px;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid var(--loginInputBorder);
+        }
+      }
+    }
+}
