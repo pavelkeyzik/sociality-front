@@ -1,11 +1,11 @@
 <div class="login">
     <div class="login__title">{{ text.title }}</div>
-    <form class="login__form">
+    <form class="login__form" (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="login__inputs">
-        <input type="text" [placeholder]=text.email>
-        <input type="password" [placeholder]=text.pass>
+        <input name="login" ngModel type="text" [placeholder]=text.login>
+        <input name="password" ngModel type="password" [placeholder]=text.pass>
       </div>
-      <input type="button" class="button button--primary" [value]=text.signIn>
+      <input type="submit" class="button button--primary" [value]=text.signIn>
       <div class="login__links">
         <a href="#">{{ text.signUp }}</a>
         <a href="#">{{ text.forgotPass }}</a>

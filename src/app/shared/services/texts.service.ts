@@ -9,7 +9,7 @@ export class TextsService {
     constructor(private http: Http) {}
 
     get(page: string) {
-        return this.http.get('app/shared/services/texts/' + this.selectedLanguage + '/' + page + '.json')
+        return this.http.get('assets/texts/' + this.selectedLanguage + '/' + page + '.json')
                  .map(data => data.json());
     }
 }
