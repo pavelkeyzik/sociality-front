@@ -1,4 +1,4 @@
-<div class="login">
+<div class="login" *ngIf="show">
     <div class="login__title">{{ text.title }}</div>
     <form class="login__form" (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="login__inputs">

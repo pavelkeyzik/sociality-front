@@ -8,7 +8,17 @@ const API_CONFIG = {
 
 @Injectable()
 export class ApiService {
-    constructor(private http: Http) {}
+    private _env: string;
+
+    constructor(private http: Http) {
+      let env = localStorage.getItem('env');
+      if(env)
+        this._env = env;
+      else {
+        this._env = 'dev';
+        localStorage.setItem('env', 'dev');
+      }
+    }
 
     createAuthorizationHeader(headers: Headers) {
       headers.append('Authorization', 'Bearer ' +
@@ -32,6 +42,8 @@ export class ApiService {
     }
 
     authUser(login: string, password: string) {
+      if(this._env == 'dev')
+        return this.get('assets/dev/user.json');
       let params = {
         login: login,
         password: password
