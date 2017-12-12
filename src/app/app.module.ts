@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SocialityComponent } from './sociality/sociality.component';
+import { ProfileModule } from './sociality/profile/profile.module';
 import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './shared/services/loader.service';
@@ -24,8 +25,8 @@ import { LoaderService } from './shared/services/loader.service';
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'sociality',
-        component: SocialityComponent
+        path: 'profile',
+        loadChildren: () => ProfileModule
       },
       {
         path: 'login',

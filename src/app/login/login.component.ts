@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
                           this.loader.setLoad(false);
                           let access_token = 'Bearer ' + data.access_token;
                           localStorage.setItem('access_token', access_token);
-                          this.route.navigate(['/sociality']);
+                          this.route.navigate(['/profile']);
                         },
                         error => {
                           this.loader.setLoad(false);
