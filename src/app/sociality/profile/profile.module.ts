@@ -10,12 +10,11 @@ import { ProfileComponent } from './profile.component';
     RouterModule.forChild([
       {
         path: '',
-        component: ProfileComponent,
+        component: ProfileComponent
       },
       {
         path: ':id',
-        component: ProfileComponent,
-        data: [{isProd: true}]
+        component: ProfileComponent
       }
     ])
   ]

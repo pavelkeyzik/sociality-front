@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  template: '<b>Profile {{ id }}</b>'
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.less']
 })
 export class ProfileComponent {
   private id;
@@ -11,6 +12,4 @@ export class ProfileComponent {
   constructor(private route: ActivatedRoute) {
     this.id = route.snapshot.params['id'];
   }
-
-
 }

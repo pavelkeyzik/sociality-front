@@ -1,2 +1,13 @@
 <app-loader *ngIf="loaderState"></app-loader>
 <router-outlet></router-outlet>
+<nav>
+  <a routerLink="/friends" routerLinkActive="active">
+    <i class="material-icons">people</i>
+  </a>
+  <a routerLink="/messages" routerLinkActive="active">
+    <i class="material-icons">message</i>
+  </a>
+  <a routerLink="/profile" routerLinkActive="active">
+    <i class="material-icons">person</i>
+  </a>
+</nav>

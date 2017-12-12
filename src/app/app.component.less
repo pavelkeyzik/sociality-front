@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 666;
+  height: 45px;
+  background: #fff;
+  box-shadow: 0 0 3px #aaa;
+
+  a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+
+    &.active {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
