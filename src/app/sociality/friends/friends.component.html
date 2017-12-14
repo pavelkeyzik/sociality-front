@@ -1,9 +1,20 @@
-<b>friends</b>
-<hr>
-  <input type="text" placeholder="Start typing a friend's name" [(ngModel)]="searchText">
-<hr>
-<ul>
-  <li *ngFor="let friend of (friends | filter:searchText)">
-    {{ friend.name }} ({{ friend.online }})
-  </li>
-</ul>
+<div class="pk-input__search">
+  <label for="searchFriends">
+    <i class="material-icons">search</i>
+  </label>
+  <input type="text" placeholder="Start typing a friend's name" [(ngModel)]="searchText" id="searchFriends">
+</div>
+<div class="friends">
+  <div class="friends__item" *ngFor="let friend of (friends | filter:searchText:'name')">
+    <div class="friends__left">
+      <div class="pk-avatar">
+        <img [src]="friend.avatar" alt="#">
+        <div class="pk-status pk-status--not-here"></div>
+      </div>
+      <div class="friends__name">
+        <span>{{ friend.name }}</span>
+      </div>
+    </div>
+    <i class="friends__mail material-icons">email</i>
+  </div>
+</div>

@@ -3,16 +3,16 @@ import { RouterModule } from '@angular/router';
 import { FriendsComponent } from './friends.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from '../../shared/pipes/filter.pipe';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
     FriendsComponent,
-    FilterPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
+    PipesModule,
     RouterModule.forChild([
       {
         path: '',

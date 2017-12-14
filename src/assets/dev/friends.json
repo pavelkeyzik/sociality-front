@@ -1,10 +1,12 @@
 [
   {
     "name": "Pavel Keyzik",
-    "online": true
+    "online": true,
+    "avatar": "assets/dev/images/avatar.jpg"
   },
   {
     "name": "Darya Razumovskaya",
-    "online": false
+    "online": false,
+    "avatar": "assets/dev/images/avatar.jpg"
   }
 ]

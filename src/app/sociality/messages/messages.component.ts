@@ -4,6 +4,7 @@ import { MessagesService } from '../../shared/services/messages.service';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
+  styleUrls: ['./messages.component.less'],
   providers: [MessagesService]
 })
 export class MessagesComponent implements OnInit {

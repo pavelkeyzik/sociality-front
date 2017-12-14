@@ -4,6 +4,7 @@ import { FriendsService } from '../../shared/services/friends.service';
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
+  styleUrls: ['./friends.component.less'],
   providers: [FriendsService]
 })
 export class FriendsComponent implements OnInit {

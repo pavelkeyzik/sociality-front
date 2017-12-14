@@ -1,0 +1,50 @@
+.friends {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+
+  &__name {
+    overflow: hidden;
+    span {
+      width: 100%;
+      padding-right: 10px;
+      color: #444;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__mail {
+    @primary: #663399;
+    color: lighten(@primary, 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    transition: .2s;
+    font-size: 14pt;
+
+    &:hover {
+      color: @primary;
+      cursor: pointer;
+    }
+  }
+}

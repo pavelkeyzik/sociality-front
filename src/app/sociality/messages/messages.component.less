@@ -1,0 +1,55 @@
+.messages {
+  background: #fff;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #f6f6f6;
+  }
+
+  &__avatar {
+    display: flex;
+    padding: 8px;
+    position: relative;
+
+    img {
+      @size: 50px;
+      width: @size;
+      height: @size;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__author {
+    font-weight: bold;
+    font-size: 11pt;
+  }
+
+  &__author span,
+  &__text span {
+      width: 100%;
+      padding-right: 10px;
+      color: #444;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
+  &__text {
+    color: #888;
+    font-size: 10pt;
+  }
+}
