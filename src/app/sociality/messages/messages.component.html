@@ -1,0 +1,5 @@
+<b>Messages</b>
+<hr>
+<ul>
+  <li *ngFor="let message of messages"><b>{{ message.author }}</b> (<i>{{ message.date }}</i>)<br>{{ message.message }}</li>
+</ul>

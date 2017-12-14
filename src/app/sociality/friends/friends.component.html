@@ -1,0 +1,9 @@
+<b>friends</b>
+<hr>
+  <input type="text" placeholder="Start typing a friend's name" [(ngModel)]="searchText">
+<hr>
+<ul>
+  <li *ngFor="let friend of (friends | filter:searchText)">
+    {{ friend.name }} ({{ friend.online }})
+  </li>
+</ul>

@@ -1,5 +1,18 @@
-<div class="profile">
-  <div class="profile__avatar">
-    <img src="#" alt="Avatar-ka">
+<div class="profile" *ngIf="show">
+  <div class="profile__top">
+    <div class="profile__avatar">
+      <img [src]="profile.avatar">
+    </div>
+    <div class="profile__user">
+      <div class="profile__name">{{ profile.name }}</div>
+      <div class="profile__status">
+        <i class="material-icons profile__status--online">brightness_1</i>
+      </div>
+    </div>
   </div>
+  <a href="#" class="profile__message">Send Message</a>
+  <ul class="profile__info">
+    <li><i class="material-icons">smartphone</i>{{ profile.phone }}</li>
+    <li><i class="material-icons">mail_outline</i>{{ profile.email }}</li>
+</ul>
 </div>

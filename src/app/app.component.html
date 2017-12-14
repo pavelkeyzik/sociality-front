@@ -1,6 +1,10 @@
 <app-loader *ngIf="loaderState"></app-loader>
+<nav class="top-nav">
+  <a href="#"><i class="material-icons">keyboard_arrow_left</i></a>
+  <a href="#"><i class="material-icons">settings</i></a>
+</nav>
 <router-outlet></router-outlet>
-<nav>
+<nav class="bottom-nav">
   <a routerLink="/friends" routerLinkActive="active">
     <i class="material-icons">people</i>
   </a>

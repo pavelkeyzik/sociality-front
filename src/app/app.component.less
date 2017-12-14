@@ -1,4 +1,37 @@
-nav {
+.top-nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  background: #663399;
+  box-shadow: 0 0 4px #666;
+  z-index: 999;
+
+  a {
+    text-decoration: none;
+  }
+
+  i {
+    color: #fff;
+    font-size: 14pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    transition: .2s;
+
+    &:hover {
+      background: #5c2e8a;
+      color: #efe7f7;
+    }
+  }
+}
+
+.bottom-nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -6,9 +39,9 @@ nav {
   left: 0;
   bottom: 0;
   z-index: 666;
-  height: 45px;
+  height: 40px;
   background: #fff;
-  box-shadow: 0 0 3px #aaa;
+  box-shadow: 0 0 3px #ddd;
 
   a {
     display: flex;
@@ -17,10 +50,20 @@ nav {
     justify-content: center;
     text-decoration: none;
     color: #000;
+    @border: 2px;
+    border-top: @border solid #fff;
+    outline: none;
+    transition: .2s;
+
+    i {
+      font-size: 13pt;
+    }
 
     &.active {
-      background: #000;
-      color: #fff;
+      @primary: #663399;
+      border-top: @border solid @primary;
+      color: @primary;
+      background: lighten(@primary, 58%);
     }
   }
 }
