@@ -1,0 +1,34 @@
+<app-view-image></app-view-image>
+<div class="dialog">
+  <div class="dialog__message">
+    <div class="dialog__text">Hey! How are u? asd as das das das dasd as</div>
+  </div>
+  <div class="dialog__message dialog__message--from">
+    <div class="dialog__text">Hi! I'm fine and you? asd as das das das dasd as</div>
+  </div>
+  <div class="dialog__message">
+    <div class="dialog__text">Nice...</div>
+  </div>
+  <div class="dialog__message dialog__message--from" (click)="showImage('assets/dev/images/big_avatar.jpg')">
+      <div class="dialog__image">
+        <img src="assets/dev/images/avatar.jpg">
+        <div class="dialog__image-description">View Full</div>
+        <i class="material-icons">camera_alt</i>
+      </div>
+  </div>
+  <div class="dialog__message">
+    <div class="dialog__text">Nice girl, but I have montains!</div>
+  </div>
+  <div class="dialog__message" (click)="showImage('assets/dev/images/img1_f.jpeg')">
+      <div class="dialog__image">
+        <img src="assets/dev/images/img1.jpeg">
+        <div class="dialog__image-description">View Full</div>
+        <i class="material-icons">camera_alt</i>
+      </div>
+  </div>
+</div>
+<div class="message">
+  <i class="material-icons">attach_file</i>
+  <input type="text" class="message__text">
+  <i class="material-icons">send</i>
+</div>

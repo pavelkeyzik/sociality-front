@@ -5,7 +5,7 @@
     </label>
     <input  type="text" placeholder="Search" id="searchMessage" [(ngModel)]="searchText">
   </div>
-  <div class="message" *ngFor="let message of (messages | filter:searchText:'author')">
+  <a routerLink="/messages/{{ message.id }}" class="message" *ngFor="let message of (messages | filter:searchText:'author')">
     <div class="pk-avatar">
       <img [src]=message.avatar alt="#">
       <div class="pk-status pk-status--online"></div>
@@ -18,5 +18,11 @@
         <span>{{ message.message }}</span>
       </div>
     </div>
-  </div>
+    <div class="message__info">
+      <div class="message__info--time">12:20 AM</div>
+      <div class="message__info--count">
+        <span>2</span>
+      </div>
+    </div>
+  </a>
 </div>
