@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../shared/services/profile.service';
 import { LoaderService } from '../../shared/services/loader.service';
+import { TopBarService } from '../../shared/services/top-bar.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,8 +18,10 @@ export class ProfileComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private profileService: ProfileService,
-              private loaderService: LoaderService) {
+              private loaderService: LoaderService,
+              private topBar: TopBarService) {
                 loaderService.setLoad(true);
+                topBar.setViewNavBar(true);
               }
 
   ngOnInit() {

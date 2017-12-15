@@ -1,16 +1,24 @@
+@import 'colors.less';
+
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  height: 40px;
-  border-radius: 2px;
+  @button-size: 40px;
+  height: @button-size;
+  border-radius: @button-size;
   margin: 10px 0;
   cursor: pointer;
 
   &--primary {
-    background: var(--buttonBackgroundPrimary);
+    background: @action;
     color: var(--buttonColorPrimary);
+    transition: .2s;
+
+    &:hover {
+      background: lighten(@action, 10%);
+    }
   }
 
   &--disabled {

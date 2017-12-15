@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { SocialityComponent } from './sociality/sociality.component';
 import { ProfileModule } from './sociality/profile/profile.module';
 import { MessagesModule } from './sociality/messages/messages.module';
@@ -13,11 +14,13 @@ import { FriendsModule } from './sociality/friends/friends.module';
 import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './shared/services/loader.service';
+import { TopBarService } from './shared/services/top-bar.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegistrationComponent,
     SocialityComponent,
     LoaderComponent
   ],
@@ -43,6 +46,10 @@ import { LoaderService } from './shared/services/loader.service';
         component: LoginComponent
       },
       {
+        path: 'registration',
+        component: RegistrationComponent
+      },
+      {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full'
@@ -53,7 +60,7 @@ import { LoaderService } from './shared/services/loader.service';
       }
     ])
   ],
-  providers: [LoaderService],
+  providers: [LoaderService, TopBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

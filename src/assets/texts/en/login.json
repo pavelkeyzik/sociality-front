@@ -3,6 +3,7 @@
     "email": "Your e-mail",
     "login": "Your login",
     "pass": "Your password",
+    "passRepeat": "Repeat your password",
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "forgotPass": "Forgot password?"

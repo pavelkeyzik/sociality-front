@@ -1,17 +1,19 @@
-<app-loader *ngIf="loaderState"></app-loader>
-<nav class="top-nav">
-  <a href="#"><i class="material-icons">keyboard_arrow_left</i></a>
-  <a href="#"><i class="material-icons">settings</i></a>
-</nav>
-<router-outlet></router-outlet>
-<nav class="bottom-nav">
-  <a routerLink="/friends" routerLinkActive="active">
-    <i class="material-icons">people</i>
-  </a>
-  <a routerLink="/messages" routerLinkActive="active">
-    <i class="material-icons">message</i>
-  </a>
-  <a routerLink="/profile" routerLinkActive="active">
-    <i class="material-icons">person</i>
-  </a>
-</nav>
+<div class="app">
+  <app-loader *ngIf="loaderState"></app-loader>
+  <nav class="top-nav" *ngIf="viewNavBar">
+    <a href="#"><i class="material-icons">keyboard_arrow_left</i></a>
+    <a href="#"><i class="material-icons">settings</i></a>
+  </nav>
+  <router-outlet></router-outlet>
+  <nav class="bottom-nav">
+    <a routerLink="/friends" routerLinkActive="active">
+      <i class="material-icons">people</i>
+    </a>
+    <a routerLink="/messages" routerLinkActive="active">
+      <i class="material-icons">message</i>
+    </a>
+    <a routerLink="/profile" routerLinkActive="active">
+      <i class="material-icons">person</i>
+    </a>
+  </nav>
+</div>
