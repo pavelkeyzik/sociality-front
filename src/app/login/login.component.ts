@@ -39,13 +39,17 @@ export class LoginComponent implements OnInit {
                           this.loader.setLoad(false);
                           let access_token = 'Bearer ' + data.access_token;
                           localStorage.setItem('access_token', access_token);
-                          this.route.navigate(['/profile']);
+                          localStorage.setItem('login', data.login);
+                          this.route.navigate(['/profile/' + data.login]);
                         },
                         error => {
                           this.loader.setLoad(false);
-                          console.log('ERROR:', error.status);
+                          console.log('ERROR:', error);
                           if(error.status == 404) {
                             console.log('Пользователь не найден');
+                          }
+                          if(error.status == 0) {
+                            console.log('Возможно сервер не запущен или находится по другому адресу');
                           }
                         });
     }

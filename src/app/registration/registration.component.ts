@@ -39,13 +39,16 @@ export class RegistrationComponent implements OnInit {
                           this.loader.setLoad(false);
                           let access_token = 'Bearer ' + data.access_token;
                           localStorage.setItem('access_token', access_token);
-                          this.route.navigate(['/profile']);
+                          this.route.navigate(['/profile/' + data.login]);
                         },
                         error => {
                           this.loader.setLoad(false);
                           console.log('ERROR:', error.status);
                           if(error.status == 404) {
                             console.log('Пользователь не найден');
+                          }
+                          if(error.status == 0) {
+                            console.log('Возможно сервер не запущен или находится по другому адресу');
                           }
                         });
     }

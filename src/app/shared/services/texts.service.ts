@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TextsService {
-    private selectedLanguage: string = 'ru';
+    private selectedLanguage: string = 'en';
 
     constructor(private http: Http) {}
 

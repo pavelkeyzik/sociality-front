@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../shared/services/api.service';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { CommonModule } from '@angular/common';
         component: ProfileComponent
       },
       {
-        path: ':id',
+        path: ':login',
         component: ProfileComponent
       }
     ])
-  ]
+  ],
+  providers: [ApiService]
 })
 export class ProfileModule { }

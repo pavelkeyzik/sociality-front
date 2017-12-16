@@ -18,16 +18,22 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               private location: Location,
               private loader: LoaderService,
-              private topBar: TopBarService) {}
+              private topBar: TopBarService) {
+                this.lol();
+              }
 
   ngOnInit() {
+
+  }
+
+  lol() {
     this.loader.loaderState.subscribe(data => this.loaderState = data);
     this.topBar.viewNavBar.subscribe(data => this.viewNavBar = data);
 
     if(localStorage.getItem('access_token') != null) {
       this.authorized = true;
       if(this.location.path() == '/login' || !this.location.path())
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile/' + localStorage.getItem('login')]);
     } else {
       this.authorized = false;
       if(this.location.path() == '/registration')

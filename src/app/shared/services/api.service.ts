@@ -21,13 +21,13 @@ export class ApiService {
     }
 
     createAuthorizationHeader(headers: Headers) {
-      headers.append('Authorization', 'Bearer ' +
-        localStorage.getItem('access_token'));
+      headers.append('Authorization', localStorage.getItem('access_token'));
     }
 
     get(url) {
       let headers = new Headers();
       this.createAuthorizationHeader(headers);
+
       return this.http.get(url, {
         headers: headers
       }).map(data => data.json());
@@ -44,10 +44,18 @@ export class ApiService {
     authUser(login: string, password: string) {
       if(this._env == 'dev')
         return this.get('assets/dev/user.json');
+
       let params = {
         login: login,
         password: password
       };
       return this.post(API_CONFIG.base_url + 'authorization', params);
+    }
+
+    getProfile(login: string) {
+      if(this._env == 'dev')
+        return this.http.get('assets/dev/profile.json').map(data => data.json());
+
+      return this.get('http://localhost:5000/profile/' + login);
     }
 }
