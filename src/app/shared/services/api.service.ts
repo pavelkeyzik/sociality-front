@@ -44,6 +44,7 @@ export class ApiService {
     authUser(login: string, password: string) {
       if(this._env == 'dev')
         return this.get('assets/dev/user.json');
+
       let params = {
         login: login,
         password: password

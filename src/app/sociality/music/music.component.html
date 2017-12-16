@@ -1,0 +1,9 @@
+music
+<hr>
+<button (click)="currentMusic = musics[0]">1</button>
+<button (click)="currentMusic = musics[1]">2</button>
+<button (click)="currentMusic = musics[2]">3</button>
+{{ currentMusic | json }}
+<audio controls>
+    <source [src]=currentMusic.url type="audio/mpeg">
+</audio>

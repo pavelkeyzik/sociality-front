@@ -47,6 +47,9 @@ export class RegistrationComponent implements OnInit {
                           if(error.status == 404) {
                             console.log('Пользователь не найден');
                           }
+                          if(error.status == 0) {
+                            console.log('Возможно сервер не запущен или находится по другому адресу');
+                          }
                         });
     }
 }

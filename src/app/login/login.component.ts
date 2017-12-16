@@ -43,9 +43,12 @@ export class LoginComponent implements OnInit {
                         },
                         error => {
                           this.loader.setLoad(false);
-                          console.log('ERROR:', error.status);
+                          console.log('ERROR:', error);
                           if(error.status == 404) {
                             console.log('Пользователь не найден');
+                          }
+                          if(error.status == 0) {
+                            console.log('Возможно сервер не запущен или находится по другому адресу');
                           }
                         });
     }

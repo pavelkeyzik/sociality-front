@@ -11,6 +11,7 @@ import { SocialityComponent } from './sociality/sociality.component';
 import { ProfileModule } from './sociality/profile/profile.module';
 import { MessagesModule } from './sociality/messages/messages.module';
 import { FriendsModule } from './sociality/friends/friends.module';
+import { MusicModule } from './sociality/music/music.module';
 import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './shared/services/loader.service';
@@ -28,6 +29,7 @@ import { TopBarService } from './shared/services/top-bar.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MusicModule,
     RouterModule.forRoot([
       {
         path: 'profile',
@@ -40,6 +42,10 @@ import { TopBarService } from './shared/services/top-bar.service';
       {
         path: 'friends',
         loadChildren: () => FriendsModule
+      },
+      {
+        path: 'music',
+        loadChildren: () => MusicModule
       },
       {
         path: 'login',
