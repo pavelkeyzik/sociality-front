@@ -14,6 +14,7 @@ import { LoaderService } from '../shared/services/loader.service';
 export class LoginComponent implements OnInit {
     public text = {};
     public show = false;
+    public id = localStorage.getItem('id');
 
     constructor(private textsService: TextsService,
                 private apiService: ApiService,
@@ -39,8 +40,8 @@ export class LoginComponent implements OnInit {
                           this.loader.setLoad(false);
                           let access_token = 'Bearer ' + data.access_token;
                           localStorage.setItem('access_token', access_token);
-                          localStorage.setItem('login', data.login);
-                          this.route.navigate(['/profile/' + data.login]);
+                          localStorage.setItem('id', data.id);
+                          this.route.navigate(['/profile/' + data.id]);
                         },
                         error => {
                           this.loader.setLoad(false);

@@ -15,8 +15,8 @@ export class ApiService {
       if(env)
         this._env = env;
       else {
-        this._env = 'dev';
-        localStorage.setItem('env', 'dev');
+        this._env = 'prod';
+        localStorage.setItem('env', 'prod');
       }
     }
 
@@ -52,10 +52,50 @@ export class ApiService {
       return this.post(API_CONFIG.base_url + 'authorization', params);
     }
 
-    getProfile(login: string) {
+    registrationUser(params) {
+      return this.post(API_CONFIG.base_url+ 'registration', params);
+    }
+
+    getProfile(id: string) {
+      console.log('Profile', id);
       if(this._env == 'dev')
         return this.http.get('assets/dev/profile.json').map(data => data.json());
 
-      return this.get('http://localhost:5000/profile/' + login);
+      return this.get(API_CONFIG.base_url + 'profile/' + id);
+    }
+
+    getMessages(friendId: string) {
+      if(localStorage.getItem('env') == 'dev')
+        return this.http.get('assets/dev/messages.json').map(data => data.json());
+
+      return this.get(API_CONFIG.base_url + 'messages/' + friendId);
+    }
+
+    sendMessage(friendId: string, params) {
+      return this.post(API_CONFIG.base_url + 'messages/' + friendId, params);
+    }
+
+    readMessage(friendId: string) {
+      console.log('readMessage', friendId);
+      console.log('>>>>', API_CONFIG.base_url + 'messages/read/' + friendId);
+      return this.get(API_CONFIG.base_url + 'messages/read/' + friendId);
+    }
+
+    getDialogs() {
+      if(localStorage.getItem('env') == 'dev')
+        return this.http.get('assets/dev/messages.json').map(data => data.json());
+
+      return this.get(API_CONFIG.base_url + 'dialogs');
+    }
+
+    getFriends(page: number, limit: number) {
+      if(localStorage.getItem('env') == 'dev')
+        return this.http.get('assets/dev/friends.json').map(data => data.json());
+
+      let params = {
+        page: page,
+        limit: limit
+      };
+      return this.post(API_CONFIG.base_url + 'profile', params);
     }
 }

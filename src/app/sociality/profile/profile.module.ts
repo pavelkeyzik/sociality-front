@@ -16,7 +16,7 @@ import { ApiService } from '../../shared/services/api.service';
         component: ProfileComponent
       },
       {
-        path: ':login',
+        path: ':id',
         component: ProfileComponent
       }
     ])

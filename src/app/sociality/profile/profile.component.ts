@@ -11,7 +11,7 @@ import { TopBarService } from '../../shared/services/top-bar.service';
   providers: [ApiService]
 })
 export class ProfileComponent implements OnInit {
-  private login;
+  private id;
   public profile = {};
   private avatar;
   private show: boolean = false;
@@ -27,12 +27,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.setLoad(true);
-    this.login = this.route.snapshot.params['login'];
+    this.id = this.route.snapshot.params['id'];
 
-    if(this.login == null)
-      this.login = localStorage.getItem('login');
+    if(this.id == null)
+      this.id = localStorage.getItem('id');
 
-    this.api.getProfile(this.login).subscribe(data => {
+    this.api.getProfile(this.id).subscribe(data => {
       if(!data.avatar) {
         if(data.gender == 'male') {
           data.avatar = 'assets/dev/images/no-avatar-male.svg';

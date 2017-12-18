@@ -1,6 +1,12 @@
 <app-view-image></app-view-image>
+<!-- {{ messages | json }} -->
 <div class="dialog">
-  <div class="dialog__message">
+  <div class="dialog__message" [class.dialog__message--from]="message.authorId == id" *ngFor="let message of messages">
+    <div class="dialog__text" *ngIf="message.type == 'text'">
+      {{ message.messageText }}
+    </div>
+  </div>
+  <!-- <div class="dialog__message">
     <div class="dialog__text">Hey! How are u? asd as das das das dasd as</div>
   </div>
   <div class="dialog__message dialog__message--from">
@@ -25,10 +31,13 @@
         <div class="dialog__image-description">View Full</div>
         <i class="material-icons">camera_alt</i>
       </div>
-  </div>
+  </div> -->
 </div>
-<div class="message">
-  <i class="material-icons">attach_file</i>
-  <input type="text" class="message__text">
-  <i class="material-icons">send</i>
-</div>
+<form class="message" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <label for="fileAttach">
+    <i class="material-icons">camera_alt</i>
+  </label>
+  <input #file (change)="onChange($event)" id="fileAttach" type="file" name="pic" accept="image/*" hidden>
+  <input type="text" class="message__text" name="text" ngModel placeholder="Type message here..">
+  <button type="submit" class="material-icons">send</button>
+</form>

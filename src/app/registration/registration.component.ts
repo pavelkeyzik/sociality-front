@@ -33,19 +33,28 @@ export class RegistrationComponent implements OnInit {
 
     onSubmit(form) {
       this.loader.setLoad(true);
-      this.apiService.authUser(form.value.login, form.value.password)
+      let params = {
+        login: form.value.login,
+        password: form.value.password,
+        repeatedPassword: form.value.repeatedPassword
+      };
+      this.apiService.registrationUser(params)
                       .subscribe(
-                        data => {
-                          this.loader.setLoad(false);
-                          let access_token = 'Bearer ' + data.access_token;
-                          localStorage.setItem('access_token', access_token);
-                          this.route.navigate(['/profile/' + data.login]);
+                        success => {
+                          this.apiService.authUser(params.login, params.password)
+                              .subscribe(data => {
+                                this.loader.setLoad(false);
+                                let access_token = 'Bearer ' + data.access_token;
+                                localStorage.setItem('access_token', access_token);
+                                localStorage.setItem('id', data.id);
+                                this.route.navigate(['/profile/' + data.id]);
+                              });
                         },
                         error => {
                           this.loader.setLoad(false);
-                          console.log('ERROR:', error.status);
+                          console.log('ERROR:', error);
                           if(error.status == 404) {
-                            console.log('Пользователь не найден');
+                            console.log('Пользователь не зарегистрирован');
                           }
                           if(error.status == 0) {
                             console.log('Возможно сервер не запущен или находится по другому адресу');

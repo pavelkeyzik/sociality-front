@@ -4,7 +4,10 @@
   </label>
   <input type="text" placeholder="Start typing a friend's name" [(ngModel)]="searchText" id="searchFriends">
 </div>
-<div class="friends">
+<div class="friends__count" *ngIf="friends && friends.length > 0">
+  Кол-во друзей: {{ friends.length }}
+</div>
+<div class="friends" *ngIf="friends && friends.length > 0; else noFriends">
   <div class="friends__item" *ngFor="let friend of (friends | filter:searchText:'name')">
     <div class="friends__left">
       <div class="pk-avatar">
@@ -15,6 +18,13 @@
         <span>{{ friend.name }}</span>
       </div>
     </div>
-    <i class="friends__mail material-icons">email</i>
+    <a routerLink="/messages/{{ friend.id }}" *ngIf="friend.id != id">
+      <i class="friends__mail material-icons">email</i>
+    </a>
   </div>
 </div>
+<ng-template #noFriends>
+  <div class="no-friends">
+    <span>You haven't got friends..</span>
+  </div>
+</ng-template>

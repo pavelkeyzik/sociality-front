@@ -1,5 +1,16 @@
 .messages {
   background: #fff;
+
+  &__count {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 12px;
+    color: #666;
+    background: #fdfdfd;
+    border-bottom: 1px solid #f6f6f6;
+  }
 }
 
 .message {
@@ -57,10 +68,16 @@
     font-size: 10pt;
   }
 
+  &__unreaded {
+    background: #efe7f7;
+  }
+
   &__info {
     display: flex;
-    justify-content: center;
+    align-self: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
+    margin-top: 10px;
 
     &--time {
       font-size: 8pt;
@@ -86,6 +103,23 @@
         color: #fff;
         font-weight: bold;
       }
+    }
+  }
+}
+
+.no-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  color: #888;
+
+  span:last-child {
+    font-size: 10pt;
+
+    a {
+      color: #1e90ff;
     }
   }
 }

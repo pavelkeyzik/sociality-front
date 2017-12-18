@@ -5,24 +5,37 @@
     </label>
     <input  type="text" placeholder="Search" id="searchMessage" [(ngModel)]="searchText">
   </div>
-  <a routerLink="/messages/{{ message.id }}" class="message" *ngFor="let message of (messages | filter:searchText:'author')">
-    <div class="pk-avatar">
-      <img [src]=message.avatar alt="#">
-      <div class="pk-status pk-status--online"></div>
-    </div>
-    <div class="message__content">
-      <div class="message__author">
-        <span>{{ message.author }}</span>
+  <div class="messages__count" *ngIf="messages && messages.length > 0">
+    Кол-во диалогов: {{ messages.length }}
+  </div>
+  <div *ngIf="messages && messages.length > 0; else messagesNotFound">
+    <div *ngFor="let message of (messages | filter:searchText:'author')">
+    <a *ngIf="users[message.friendId]" routerLink="/messages/{{ users[message.friendId].id }}" class="message" [class.message__unreaded]="message.unreaded > 0">
+      <div class="pk-avatar" *ngIf="users[message.friendId]">
+        <img [src]=users[message.friendId].avatar alt="#">
+        <div class="pk-status pk-status--online"></div>
       </div>
-      <div class="message__text">
-        <span>{{ message.message }}</span>
+      <div class="message__content">
+        <div class="message__author">
+          <span *ngIf="users[message.friendId]">{{ users[message.friendId].name }}</span>
+        </div>
+        <div class="message__text">
+          <span>{{ message.lastMessage }}</span>
+        </div>
       </div>
-    </div>
-    <div class="message__info">
-      <div class="message__info--time">12:20 AM</div>
-      <div class="message__info--count">
-        <span>2</span>
+      <div class="message__info">
+        <div class="message__info--time">{{ message.dateMessage | date:'shortTime' }}</div>
+        <div class="message__info--count">
+          <span *ngIf="message.unreaded > 0">{{ message.unreaded }}</span>
+        </div>
       </div>
+    </a>
+  </div>
+  </div>
+  <ng-template #messagesNotFound>
+    <div class="no-messages">
+      <span>You didn't get any message..</span>
+      <span>Visit <a routerLink="/friends">friends</a> page for write your first message.</span>
     </div>
-  </a>
+  </ng-template>
 </div>
