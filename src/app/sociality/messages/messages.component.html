@@ -13,7 +13,10 @@
     <a *ngIf="users[message.friendId]" routerLink="/messages/{{ users[message.friendId].id }}" class="message" [class.message__unreaded]="message.unreaded > 0">
       <div class="pk-avatar" *ngIf="users[message.friendId]">
         <img [src]=users[message.friendId].avatar alt="#">
-        <div class="pk-status pk-status--online"></div>
+        <div class="pk-status"
+             [class.pk-status--online]="users[message.friendId].online"
+             [class.pk-status--offline]="!users[message.friendId].online"
+        ></div>
       </div>
       <div class="message__content">
         <div class="message__author">

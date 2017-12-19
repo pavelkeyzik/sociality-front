@@ -76,6 +76,13 @@ export class ApiService {
       return this.put(API_CONFIG.base_url + 'profile/' + id, params);
     }
 
+    updateStatus(id:string, online: boolean) {
+      let params = {
+        online: online
+      };
+      return this.put(API_CONFIG.base_url + 'profile/' + id, params);
+    }
+
     getMessages(friendId: string) {
       if(localStorage.getItem('env') == 'dev')
         return this.http.get('assets/dev/messages.json').map(data => data.json());

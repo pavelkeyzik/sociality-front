@@ -6,7 +6,9 @@
     <div class="profile__user">
       <div class="profile__name">{{ profile.name }}</div>
       <div class="profile__status">
-        <i class="material-icons profile__status--online">brightness_1</i>
+        <i class="material-icons"
+           [class.profile__status--online]="profile.online"
+           [class.profile__status--offline]="!profile.online">brightness_1</i>
       </div>
     </div>
   </div>

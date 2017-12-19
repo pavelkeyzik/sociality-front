@@ -1,5 +1,5 @@
 <div class="app">
-  <app-loader *ngIf="loaderState"></app-loader>
+  <app-loader *ngIf="loaderState == 'true'"></app-loader>
   <nav class="top-nav" *ngIf="viewNavBar">
     <a (click)="goBack()"><i class="material-icons">keyboard_arrow_left</i></a>
     <span class="top-nav__text">{{ textNavBar }}</span>

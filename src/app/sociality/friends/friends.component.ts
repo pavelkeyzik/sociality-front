@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { TopBarService } from '../../shared/services/top-bar.service';
@@ -9,9 +9,10 @@ import { TopBarService } from '../../shared/services/top-bar.service';
   styleUrls: ['./friends.component.less'],
   providers: [ApiService]
 })
-export class FriendsComponent implements OnInit {
+export class FriendsComponent {
   private id;
   private friends;
+  private users = {};
 
   constructor(private api: ApiService,
               private loader: LoaderService,
@@ -27,18 +28,15 @@ export class FriendsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
-  updateAvatars(users) {
-    for(let item of users) {
-      if(!item.avatar) {
-        if(item.gender == 'male') {
-          item.avatar = 'assets/dev/images/no-avatar-male.svg';
-        } else {
-          item.avatar = 'assets/dev/images/no-avatar-female.svg';
+  updateAvatars(usersArray) {
+    for(let item of usersArray) {
+        if(!item.avatar) {
+          if(item.gender == 'male') {
+            item.avatar = 'assets/dev/images/no-avatar-male.svg';
+          } else {
+            item.avatar = 'assets/dev/images/no-avatar-female.svg';
+          }
         }
-      }
     }
   }
 }

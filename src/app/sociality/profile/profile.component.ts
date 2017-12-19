@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
               private router: Router) {
                 loaderService.setLoad(true);
                 topBar.setViewNavBar(true);
+                this.api.updateStatus(localStorage.getItem('id'), true).subscribe();
               }
 
   ngOnInit() {

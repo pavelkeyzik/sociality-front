@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.less']
+  styleUrls: ['./profile-edit.component.less'],
   providers: [ApiService]
 })
 export class ProfileEditComponent {
@@ -43,7 +43,7 @@ export class ProfileEditComponent {
   }
 
   onSubmit(form) {
-    let params = {};
+    let params;
 
     if(form.value.name != '')
       params.name = form.value.name;
@@ -67,8 +67,10 @@ export class ProfileEditComponent {
   }
 
   signOut() {
-    this.topBar.setViewNavBar(false);
-    localStorage.clear();
-    this.router.navigate(['/login']);
+    this.api.updateStatus(localStorage.getItem('id'), false).subscribe(() => {
+      this.topBar.setViewNavBar(false);
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    });
   }
 }
