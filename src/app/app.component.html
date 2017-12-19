@@ -1,8 +1,9 @@
 <div class="app">
   <app-loader *ngIf="loaderState"></app-loader>
   <nav class="top-nav" *ngIf="viewNavBar">
-    <a href="#"><i class="material-icons">keyboard_arrow_left</i></a>
-    <a href="#"><i class="material-icons">settings</i></a>
+    <a (click)="goBack()"><i class="material-icons">keyboard_arrow_left</i></a>
+    <span class="top-nav__text">{{ textNavBar }}</span>
+    <a routerLink="/profile-edit"><i class="material-icons">settings</i></a>
   </nav>
   <router-outlet></router-outlet>
   <nav class="bottom-nav">

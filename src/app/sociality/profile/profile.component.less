@@ -1,3 +1,5 @@
+@import 'colors.less';
+
 .profile {
   background: #fff;
   padding-bottom: 5px;
@@ -59,7 +61,7 @@
     border-radius: 3px;
     margin: 10px;
     height: 40px;
-    background: linear-gradient(to right, #7777ff, #c58bff);
+    background: @primary;
     color: #fff;
     text-decoration: none;
     font-size: 11pt;
@@ -67,6 +69,25 @@
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+
+  &__edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    margin: 10px;
+    height: 40px;
+    background: #f5f5f5;
+    color: #555;
+    text-decoration: none;
+    font-size: 11pt;
+    transition: .2s;
+
+    &:hover {
+  background: #f0f0f0;
+  color: #888;
     }
   }
 

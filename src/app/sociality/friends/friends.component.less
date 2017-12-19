@@ -1,3 +1,5 @@
+@import 'colors.less';
+
 .friends {
   display: flex;
   flex-direction: column;
@@ -33,6 +35,12 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #f6f6f6;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+      background: #fafafa;
+    }
   }
 
   &__left {
@@ -43,7 +51,6 @@
   }
 
   &__mail {
-    @primary: #663399;
     color: lighten(@primary, 30%);
     display: flex;
     justify-content: center;

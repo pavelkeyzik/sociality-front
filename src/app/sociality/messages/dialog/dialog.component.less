@@ -1,3 +1,5 @@
+@import 'colors.less';
+
 .dialog {
   display: flex;
   flex-direction: column;
@@ -10,13 +12,13 @@
       justify-content: flex-end;
 
       .dialog__text {
-        background: #639;
+        background: @primary;
         color: #fff;
-        border: 1px solid #3f1f5e;
+        border: 1px solid darken(@primary, 10%);
       }
 
       .dialog__image {
-        background: #639;
+        background: @primary;
       }
     }
 

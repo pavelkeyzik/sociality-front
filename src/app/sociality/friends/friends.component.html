@@ -8,7 +8,7 @@
   Кол-во друзей: {{ friends.length }}
 </div>
 <div class="friends" *ngIf="friends && friends.length > 0; else noFriends">
-  <div class="friends__item" *ngFor="let friend of (friends | filter:searchText:'name')">
+  <a routerLink="/profile/{{ friend.id }}" class="friends__item" *ngFor="let friend of (friends | filter:searchText:'name')">
     <div class="friends__left">
       <div class="pk-avatar">
         <img [src]="friend.avatar" alt="#">
@@ -21,7 +21,7 @@
     <a routerLink="/messages/{{ friend.id }}" *ngIf="friend.id != id">
       <i class="friends__mail material-icons">email</i>
     </a>
-  </div>
+  </a>
 </div>
 <ng-template #noFriends>
   <div class="no-friends">

@@ -10,7 +10,10 @@
       </div>
     </div>
   </div>
-  <a href="#" class="profile__message">Send Message</a>
+  <a routerLink="/messages/{{ profile.id }}" class="profile__message" *ngIf="profile.id != authId; else editProfile">Send Message</a>
+  <ng-template #editProfile>
+    <a routerLink="/profile-edit" class="profile__edit">Edit profile</a>
+  </ng-template>
   <ul class="profile__info">
     <li *ngIf="profile.phone"><i class="material-icons">smartphone</i>{{ profile.phone }}</li>
     <li *ngIf="profile.email"><i class="material-icons">mail_outline</i>{{ profile.email }}</li>

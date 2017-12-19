@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { TopBarService } from '../../shared/services/top-bar.service';
 
 @Component({
   selector: 'app-music',
   templateUrl: './music.component.html'
 })
 export class MusicComponent {
+
+  constructor(private topBar: TopBarService) {
+    topBar.setViewNavBar(true);
+    this.topBar.setTextNavBar('Music');
+  }
 
   musics = [
     {

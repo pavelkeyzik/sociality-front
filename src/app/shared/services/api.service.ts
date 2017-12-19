@@ -41,6 +41,14 @@ export class ApiService {
       }).map(data => data.json());
     }
 
+    put(url, data) {
+      let headers = new Headers();
+      this.createAuthorizationHeader(headers);
+      return this.http.put(url, data, {
+        headers: headers
+      }).map(data => data.json());
+    }
+
     authUser(login: string, password: string) {
       if(this._env == 'dev')
         return this.get('assets/dev/user.json');
@@ -62,6 +70,10 @@ export class ApiService {
         return this.http.get('assets/dev/profile.json').map(data => data.json());
 
       return this.get(API_CONFIG.base_url + 'profile/' + id);
+    }
+
+    updateProfile(id:string, params) {
+      return this.put(API_CONFIG.base_url + 'profile/' + id, params);
     }
 
     getMessages(friendId: string) {

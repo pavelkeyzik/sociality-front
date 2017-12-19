@@ -3,6 +3,7 @@ import { ViewImageComponent } from './view-image/view-image.component';
 import { ApiService } from '../../../shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { TopBarService } from '../../../shared/services/top-bar.service';
 
  @Component({
    selector: 'app-dialog',
@@ -17,7 +18,12 @@ import { NgForm } from '@angular/forms';
 
    constructor(private api: ApiService,
                private route: ActivatedRoute,
-               private router: Router) {
+               private router: Router,
+               private topBar: TopBarService) {
+     topBar.setViewNavBar(true);
+     this.api.getProfile(route.snapshot.params['id']).subscribe(data => {
+       this.topBar.setTextNavBar('Dialog with ' + data.name);
+     });
      api.getMessages(route.snapshot.params['id'])
         .subscribe(data => {
           this.messages = data.result;

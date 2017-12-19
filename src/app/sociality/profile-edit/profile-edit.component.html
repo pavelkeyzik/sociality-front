@@ -1,0 +1,35 @@
+<div class="profile" *ngIf="show">
+  <form class="profile__form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="profile__avatar">
+      <img [src]=profile.avatar alt="No Avatar">
+      <div class="profile__overlay">
+        <label>
+          <span>Change avatar</span>
+          <input type="file" accept="image/*" hidden>
+        </label>
+      </div>
+    </div>
+    <div class="profile__signout" (click)="signOut()">Sign out</div>
+    <div class="profile__inputs">
+      <label>
+        <span>Name:</span>
+        <input type="text" name="name" ngModel [value]=profile.name>
+      </label>
+      <label>
+        <span>Phone:</span>
+        <input type="text" name="phone" ngModel [value]=profile.phone>
+      </label>
+      <label>
+        <span>E-mail:</span>
+        <input type="text" name="email" ngModel [value]=profile.email>
+      </label>
+    </div>
+    <div class="profile__genders">
+      <div class="profile__male" [class.profile__male--checked]="gender == 'male'" (click)="selectGender('male')">Male</div>
+      <div class="profile__female" [class.profile__female--checked]="gender == 'female'" (click)="selectGender('female')">Female</div>
+      <input type="radio" name="gender" value="male" ngModel hidden>
+      <input type="radio" name="gender" value="female" ngModel hidden>
+    </div>
+    <button type="submit" class="profile__save">Save</button>
+  </form>
+</div>

@@ -1,17 +1,27 @@
+@import 'colors.less';
+
+.app {
+  margin: 0;
+}
+
 .top-nav {
   display: flex;
   align-items: center;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   justify-content: space-between;
-  background: #663399;
+  background: @primary;
   box-shadow: 0 0 4px #666;
   z-index: 666;
 
+  &__text {
+    color: #fff;
+  }
+
   a {
     text-decoration: none;
+    cursor: pointer;
   }
 
   i {
@@ -25,7 +35,7 @@
     transition: .2s;
 
     &:hover {
-      background: #5c2e8a;
+      background: darken(@primary, 10%);
       color: #efe7f7;
     }
   }
@@ -60,7 +70,6 @@
     }
 
     &.active {
-      @primary: #663399;
       border-top: @border solid @primary;
       color: @primary;
       background: lighten(@primary, 58%);

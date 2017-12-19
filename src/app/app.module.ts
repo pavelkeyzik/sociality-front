@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SocialityComponent } from './sociality/sociality.component';
 import { ProfileModule } from './sociality/profile/profile.module';
+import { ProfileEditModule } from './sociality/profile-edit/profile-edit.module';
 import { MessagesModule } from './sociality/messages/messages.module';
 import { FriendsModule } from './sociality/friends/friends.module';
 import { MusicModule } from './sociality/music/music.module';
@@ -34,6 +35,10 @@ import { TopBarService } from './shared/services/top-bar.service';
       {
         path: 'profile',
         loadChildren: () => ProfileModule
+      },
+      {
+        path: 'profile-edit',
+        loadChildren: () => ProfileEditModule
       },
       {
         path: 'messages',

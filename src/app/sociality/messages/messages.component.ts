@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../shared/services/loader.service';
+import { TopBarService } from '../../shared/services/top-bar.service';
 
 @Component({
   selector: 'app-messages',
@@ -16,8 +17,11 @@ export class MessagesComponent implements OnInit {
 
   constructor(private api: ApiService,
               private router: Router,
-              private loader: LoaderService) {
+              private loader: LoaderService,
+              private topBar: TopBarService) {
     this.loader.setLoad(true);
+    topBar.setViewNavBar(true);
+    this.topBar.setTextNavBar('Messages');
     this.api.getDialogs().subscribe(data => {
 
       this.messages = data.result.slice().sort(function (a, b) {

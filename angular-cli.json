@@ -19,6 +19,7 @@
       "prefix": "app",
       "styles": [
         "assets/styles/light-theme-colors.less",
+        "assets/styles/colors.less",
         "assets/styles/main.less"
       ],
       "scripts": [],

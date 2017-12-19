@@ -12,6 +12,7 @@ import { TopBarService } from '../../shared/services/top-bar.service';
 })
 export class ProfileComponent implements OnInit {
   private id;
+  private authId;
   public profile = {};
   private avatar;
   private show: boolean = false;
@@ -28,9 +29,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.loaderService.setLoad(true);
     this.id = this.route.snapshot.params['id'];
+    this.authId = localStorage.getItem('id');
 
     if(this.id == null)
-      this.id = localStorage.getItem('id');
+      this.id = this.authId;
 
     this.api.getProfile(this.id).subscribe(data => {
       if(!data.avatar) {
@@ -41,6 +43,7 @@ export class ProfileComponent implements OnInit {
         }
       }
       this.profile = data;
+      this.topBar.setTextNavBar(data.name);
       this.show = true;
       this.loaderService.setLoad(false);
     },
