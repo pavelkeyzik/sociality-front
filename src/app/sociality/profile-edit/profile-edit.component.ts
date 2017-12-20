@@ -43,7 +43,7 @@ export class ProfileEditComponent {
   }
 
   onSubmit(form) {
-    let params;
+    let params = {};
 
     if(form.value.name != '')
       params.name = form.value.name;
@@ -54,6 +54,7 @@ export class ProfileEditComponent {
     if(form.value.email != '')
       params.email = form.value.email;
 
+    console.log(params);
     params.gender = this.gender;
     this.api.updateProfile(localStorage.getItem('id'), params)
             .subscribe(data => {
@@ -63,7 +64,6 @@ export class ProfileEditComponent {
 
   selectGender(gender: string) {
     this.gender = gender;
-    console.log(gender);
   }
 
   signOut() {

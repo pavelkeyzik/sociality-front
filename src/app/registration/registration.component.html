@@ -7,6 +7,10 @@
       <input name="login" autocomplete="off" ngModel type="text" [placeholder]=text.login>
       <input name="password" autocomplete="off" ngModel type="password" [placeholder]=text.pass>
       <input name="repeatedPassword" autocomplete="off" ngModel type="password" [placeholder]=text.passRepeat>
+      <div class="login__genders">
+        <div class="login__male" [class.login__male--checked]="gender == 'male'" (click)="selectGender('male')">Male</div>
+        <div class="login__female" [class.login__female--checked]="gender == 'female'" (click)="selectGender('female')">Female</div>
+      </div>
     </div>
     <input type="submit" class="button button--primary" [value]=text.signUp>
     <div class="login__links">

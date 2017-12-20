@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../shared/services/loader.service';
@@ -10,10 +10,12 @@ import { TopBarService } from '../../shared/services/top-bar.service';
   styleUrls: ['./messages.component.less'],
   providers: [ApiService]
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
   private messages;
   private id = "lol";
   private users = {};
+  private query = 0;
+  private dialogsInterval;
 
   constructor(private api: ApiService,
               private router: Router,
@@ -22,6 +24,20 @@ export class MessagesComponent implements OnInit {
     this.loader.setLoad(true);
     topBar.setViewNavBar(true);
     this.topBar.setTextNavBar('Messages');
+    this.getDialogs();
+    this.query += 1;
+
+    this.dialogsInterval = setInterval(() => {
+      this.getDialogs();
+      this.query += 1;
+    }, 2000);
+  }
+
+  ngOnInit() {
+
+  }
+
+  getDialogs() {
     this.api.getDialogs().subscribe(data => {
 
       this.messages = data.result.slice().sort(function (a, b) {
@@ -30,11 +46,7 @@ export class MessagesComponent implements OnInit {
 
       this.getUsersInfo(data.result);
       this.loader.setLoad(false);
-    }, error => router.navigate(['/login']));
-  }
-
-  ngOnInit() {
-
+    }, error => this.router.navigate(['/login']));
   }
 
   getUsersInfo(messages) {
@@ -52,5 +64,10 @@ export class MessagesComponent implements OnInit {
         subscriber.unsubscribe();
       });
     }
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.dialogsInterval);
+    console.log('Dialogs destroy');
   }
 }

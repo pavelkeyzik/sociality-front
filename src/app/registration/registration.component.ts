@@ -14,6 +14,7 @@ import { LoaderService } from '../shared/services/loader.service';
 export class RegistrationComponent implements OnInit {
     public text = {};
     public show = false;
+    private gender: string = 'male';
 
     constructor(private textsService: TextsService,
                 private apiService: ApiService,
@@ -60,5 +61,9 @@ export class RegistrationComponent implements OnInit {
                             console.log('Возможно сервер не запущен или находится по другому адресу');
                           }
                         });
+    }
+
+    selectGender(gender: string) {
+      this.gender = gender;
     }
 }

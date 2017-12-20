@@ -2,9 +2,11 @@
 <!-- {{ messages | json }} -->
 <div class="dialog">
   <div class="dialog__message" [class.dialog__message--from]="message.authorId == id" *ngFor="let message of messages">
+    <div class="dialog__time" *ngIf="message.authorId == id">2:33 PM</div>
     <div class="dialog__text" *ngIf="message.type == 'text'">
       {{ message.messageText }}
     </div>
+    <div class="dialog__time" *ngIf="message.authorId != id">2:29 PM</div>
   </div>
   <!-- <div class="dialog__message">
     <div class="dialog__text">Hey! How are u? asd as das das das dasd as</div>

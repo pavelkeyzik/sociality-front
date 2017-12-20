@@ -75,4 +75,47 @@
         }
       }
     }
+
+    @borderRadius: 3px;
+
+    &__genders {
+      display: flex;
+      border-radius: @borderRadius;
+      margin: 0 auto;
+      width: 200px;
+      background: #fafafa;
+      height: 40px;
+    }
+
+    &__male {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: @borderRadius;
+      border-bottom-left-radius: @borderRadius;
+      width: 100px;
+      cursor: pointer;
+
+      &--checked {
+        background: #1e90ff;
+        color: #fff;
+        cursor: default;
+      }
+    }
+
+    &__female {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: @borderRadius;
+      border-bottom-right-radius: @borderRadius;
+      width: 100px;
+      cursor: pointer;
+
+      &--checked {
+        background: #ff4d6b;
+        color: #fff;
+        cursor: default;
+      }
+    }
 }

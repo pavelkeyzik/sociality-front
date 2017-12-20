@@ -65,7 +65,6 @@ export class ApiService {
     }
 
     getProfile(id: string) {
-      console.log('Profile', id);
       if(this._env == 'dev')
         return this.http.get('assets/dev/profile.json').map(data => data.json());
 
