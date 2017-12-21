@@ -18,6 +18,6 @@
     <i class="material-icons">camera_alt</i>
   </label>
   <input #file (change)="onChange()" id="fileAttach" type="file" name="pic" accept="image/jpeg, image/png" hidden>
-  <input type="text" class="message__text" name="text" ngModel placeholder="Type message here..">
+  <input type="text" class="message__text" name="text" [(ngModel)]="message" placeholder="Type message here..">
   <button type="submit" class="material-icons">send</button>
 </form>

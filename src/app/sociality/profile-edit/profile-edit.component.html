@@ -5,7 +5,7 @@
       <div class="profile__overlay">
         <label>
           <span>Change avatar</span>
-          <input type="file" accept="image/*" hidden>
+          <input type="file" accept="image/jpeg, image/png" #file (change)="onChange()" hidden>
         </label>
       </div>
     </div>

@@ -3,6 +3,18 @@
     <i class="material-icons">close</i>
   </div>
   <div class="modal__image">
-    <img [src]="imageLink" alt="">
+    <img [src]="imageLink" alt=""
+      [class.top]="rotateDeg == 1"
+      [class.right]="rotateDeg == 2"
+      [class.bottom]="rotateDeg == 3"
+      [class.left]="rotateDeg == 4">
+    <div class="actions">
+      <div class="rotate rotate__left" (click)="leftRotate()">
+        <i class="material-icons">undo</i>
+      </div>
+      <div class="rotate rotate__right" (click)="rightRotate()">
+        <i class="material-icons">redo</i>
+      </div>
+    </div>
   </div>
 </div>

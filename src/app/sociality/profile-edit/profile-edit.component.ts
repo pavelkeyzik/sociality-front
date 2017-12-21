@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TopBarService } from '../../shared/services/top-bar.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ApiService } from '../../shared/services/api.service';
@@ -15,6 +15,7 @@ export class ProfileEditComponent {
   private profile = {};
   private show = false;
   private gender: string = '';
+  private newAvatar: boolean = false;
 
   constructor(private topBar: TopBarService,
               private api: ApiService,
@@ -54,11 +55,25 @@ export class ProfileEditComponent {
     if(form.value.email != '')
       params.email = form.value.email;
 
+    if(this.newAvatar)
+      params.avatar = this.profile.avatar;
+
     params.gender = this.gender;
     this.api.updateProfile(localStorage.getItem('id'), params)
             .subscribe(data => {
               this.router.navigate(['/profile']);
             });
+  }
+
+  @ViewChild("file") fileInput;
+
+  onChange() {
+    this.newAvatar = true;
+    this.loader.setLoad(true);
+    this.api.uploadImage(this.fileInput.nativeElement.files[0]).subscribe(data => {
+      this.profile.avatar = 'http://localhost:5000/images?id=' + data.imageId;
+      this.loader.setLoad(false);
+    });
   }
 
   selectGender(gender: string) {

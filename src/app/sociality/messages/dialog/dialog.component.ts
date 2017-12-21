@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { ViewImageComponent } from './view-image/view-image.component';
 import { ApiService } from '../../../shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { LoaderService } from '../../../shared/services/loader.service';
    styleUrls: ['./dialog.component.less'],
    providers: [ApiService]
  })
- export class DialogComponent implements OnInit {
+ export class DialogComponent implements OnInit, OnDestroy {
    private messages;
    private id = localStorage.getItem('id');
    private messagesInterval;
@@ -45,6 +45,10 @@ import { LoaderService } from '../../../shared/services/loader.service';
      this.api.readMessage(this.route.snapshot.params['id']).subscribe();
    }
 
+   ngOnDestroy() {
+     clearInterval(this.messagesInterval);
+   }
+
    showImage(id: string) {
      this.viewImage.show(id);
    }
@@ -61,10 +65,11 @@ import { LoaderService } from '../../../shared/services/loader.service';
 
    onSubmit(form) {
      let message = form.value.text;
-     this.sendMessage(message, form);
+     this.sendMessage(message);
+     this.message = '';
    }
 
-   sendMessage(message: string, form) {
+   sendMessage(message: string) {
      if(message != '') {
        let params = {
          type: 'text',
@@ -73,7 +78,6 @@ import { LoaderService } from '../../../shared/services/loader.service';
 
        this.api.sendMessage(this.route.snapshot.params['id'], params).subscribe(data => {
          console.log('SUCCESS:', data);
-         form.value.text = '';
        }, error => {
          console.log('ERROR:', error);
        });

@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ViewImageComponent {
   private showWindow: boolean = false;
   private imageLink: string = '';
+  private rotateDeg: number = 1;
 
   show(id: string) {
     this.showWindow = true;
@@ -17,5 +18,20 @@ export class ViewImageComponent {
   close() {
     this.showWindow = false;
     this.imageLink = '';
+    this.rotateDeg = 1;
+  }
+
+  rightRotate() {
+    if(this.rotateDeg + 1 > 4)
+      this.rotateDeg = 1;
+    else
+      this.rotateDeg++;
+  }
+
+  leftRotate() {
+    if(this.rotateDeg - 1 < 1)
+      this.rotateDeg = 4;
+    else
+      this.rotateDeg--;
   }
 }
