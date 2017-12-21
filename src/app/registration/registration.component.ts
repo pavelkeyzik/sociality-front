@@ -37,7 +37,8 @@ export class RegistrationComponent implements OnInit {
       let params = {
         login: form.value.login,
         password: form.value.password,
-        repeatedPassword: form.value.repeatedPassword
+        repeatedPassword: form.value.repeatedPassword,
+        gender: this.gender
       };
       this.apiService.registrationUser(params)
                       .subscribe(

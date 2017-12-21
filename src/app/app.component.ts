@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { LoaderService } from './shared/services/loader.service';
 import { LoaderComponent } from './loader/loader.component';
 import { TopBarService } from './shared/services/top-bar.service';
+import { NotificationService } from './shared/services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +16,19 @@ export class AppComponent implements OnInit {
   public loaderState: boolean = true;
   public viewNavBar: boolean = false;
   public textNavBar: string = '';
+  public showNotification: boolean = false;
 
   constructor(private router: Router,
               private location: Location,
               private loader: LoaderService,
-              private topBar: TopBarService) {
+              private topBar: TopBarService,
+              private notification: NotificationService) {
                 this.topBar.setViewNavBar(false);
+                this.notification.getStatusCode()
+                  .subscribe(data => {
+                    if(data == 0 || data == 404)
+                      this.showNotification = true;
+                  });
               }
 
   ngOnInit() {

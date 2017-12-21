@@ -1,4 +1,5 @@
 <div class="app">
+  <app-notification *ngIf="showNotification"></app-notification>
   <app-loader *ngIf="loaderState == 'true'"></app-loader>
   <nav class="top-nav" *ngIf="viewNavBar">
     <a (click)="goBack()"><i class="material-icons">keyboard_arrow_left</i></a>

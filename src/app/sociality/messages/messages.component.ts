@@ -14,7 +14,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
   private messages;
   private id = "lol";
   private users = {};
-  private query = 0;
   private dialogsInterval;
 
   constructor(private api: ApiService,
@@ -25,11 +24,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
     topBar.setViewNavBar(true);
     this.topBar.setTextNavBar('Messages');
     this.getDialogs();
-    this.query += 1;
 
     this.dialogsInterval = setInterval(() => {
       this.getDialogs();
-      this.query += 1;
     }, 2000);
   }
 
@@ -68,6 +65,5 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     clearInterval(this.dialogsInterval);
-    console.log('Dialogs destroy');
   }
 }

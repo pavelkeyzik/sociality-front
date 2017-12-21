@@ -1,0 +1,18 @@
+<div class="notification__bg" *ngIf="show">0
+  <div class="notification__content">
+    <div class="notification__info" *ngIf="codeStatus == 0">
+      <div class="notification__type notification__error">
+        <i class="material-icons">error</i>
+      </div>
+      <span class="notification__text">If we cannot reach your server the message will be delayed. We will tell the mail server to try again later.</span>
+      <a class="notification__button" (click)="closeNotification()">I agree... Close this</a>
+    </div>
+    <div class="notification__info" *ngIf="codeStatus == 404">
+      <div class="notification__type notification__warning">
+        <i class="material-icons">warning</i>
+      </div>
+      <span class="notification__text">We can't found this.</span>
+      <a class="notification__button" (click)="closeNotification()">I agree... Close this</a>
+    </div>
+  </div>
+</div>

@@ -14,9 +14,11 @@ import { MessagesModule } from './sociality/messages/messages.module';
 import { FriendsModule } from './sociality/friends/friends.module';
 import { MusicModule } from './sociality/music/music.module';
 import { LoaderComponent } from './loader/loader.component';
+import { NotificationComponent } from './notification/notification.component';
 
 import { LoaderService } from './shared/services/loader.service';
 import { TopBarService } from './shared/services/top-bar.service';
+import { NotificationService } from './shared/services/notification.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { TopBarService } from './shared/services/top-bar.service';
     LoginComponent,
     RegistrationComponent,
     SocialityComponent,
-    LoaderComponent
+    LoaderComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ import { TopBarService } from './shared/services/top-bar.service';
       }
     ])
   ],
-  providers: [LoaderService, TopBarService],
+  providers: [LoaderService, TopBarService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,9 +9,9 @@ export class ViewImageComponent {
   private showWindow: boolean = false;
   private imageLink: string = '';
 
-  show(url: string) {
+  show(id: string) {
     this.showWindow = true;
-    this.imageLink = url;
+    this.imageLink = 'http://localhost:5000/images?id=' + id;
   }
 
   close() {

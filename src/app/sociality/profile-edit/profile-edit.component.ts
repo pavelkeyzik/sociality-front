@@ -54,7 +54,6 @@ export class ProfileEditComponent {
     if(form.value.email != '')
       params.email = form.value.email;
 
-    console.log(params);
     params.gender = this.gender;
     this.api.updateProfile(localStorage.getItem('id'), params)
             .subscribe(data => {

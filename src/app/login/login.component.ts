@@ -4,6 +4,7 @@ import { ApiService } from '../shared/services/api.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from '../shared/services/loader.service';
+import { NotificationService } from '../shared/services/notification.service';
 
 @Component({
     selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     constructor(private textsService: TextsService,
                 private apiService: ApiService,
                 private route: Router,
-                private loader: LoaderService) {
+                private loader: LoaderService,
+                private notification: NotificationService) {
                   this.loader.setLoad(true);
                 }
 
@@ -28,7 +30,6 @@ export class LoginComponent implements OnInit {
                        .subscribe(texts => {
                          this.text = texts;
                          this.show = true;
-                         this.loader.setLoad(false);
                        });
     }
 
@@ -45,13 +46,8 @@ export class LoginComponent implements OnInit {
                         },
                         error => {
                           this.loader.setLoad(false);
-                          console.log('ERROR:', error);
-                          if(error.status == 404) {
-                            console.log('Пользователь не найден');
-                          }
-                          if(error.status == 0) {
-                            console.log('Возможно сервер не запущен или находится по другому адресу');
-                          }
+                          console.log(error.status);
+                          this.notification.setStatusCode(error.status);
                         });
     }
 }

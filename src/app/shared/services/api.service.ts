@@ -116,4 +116,10 @@ export class ApiService {
       };
       return this.post(API_CONFIG.base_url + 'profile', params);
     }
+
+    uploadImage(file) {
+      let input = new FormData();
+      input.append("file", file);
+      return this.http.post(API_CONFIG.base_url + 'images', input).map(data => data.json());
+    }
 }
