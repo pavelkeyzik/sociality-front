@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../shared/services/api.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { TopBarService } from '../../shared/services/top-bar.service';
+import { PostsComponent } from './posts/posts.component';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ export class ProfileComponent implements OnInit {
   private id;
   private authId;
   public profile = {};
+  private posts = {};
   private avatar;
   private show: boolean = false;
 
@@ -34,6 +36,9 @@ export class ProfileComponent implements OnInit {
 
     if(this.id == null)
       this.id = this.authId;
+
+    this.api.getPosts(this.id)
+            .subscribe(data => this.posts = data.result);
 
     this.api.getProfile(this.id).subscribe(data => {
       if(!data.avatar) {

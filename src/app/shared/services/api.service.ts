@@ -94,8 +94,6 @@ export class ApiService {
     }
 
     readMessage(friendId: string) {
-      console.log('readMessage', friendId);
-      console.log('>>>>', API_CONFIG.base_url + 'messages/read/' + friendId);
       return this.get(API_CONFIG.base_url + 'messages/read/' + friendId);
     }
 
@@ -121,5 +119,19 @@ export class ApiService {
       let input = new FormData();
       input.append("file", file);
       return this.http.post(API_CONFIG.base_url + 'images', input).map(data => data.json());
+    }
+
+    getPosts(id: string) {
+      return this.get(API_CONFIG.base_url + 'posts/' + id);
+    }
+
+    removePost(id: string) {
+      let headers = new Headers();
+      this.createAuthorizationHeader(headers);
+      return this.http.delete(API_CONFIG.base_url + 'posts/' + id, { headers: headers }).map(data => data.json());
+    }
+
+    addPost(params) {
+      return this.post(API_CONFIG.base_url + 'posts', params);
     }
 }

@@ -1,0 +1,18 @@
+<div class="posts" *ngIf="posts">
+  <form class="posts__create" (ngSubmit)="onSubmit(form)" *ngIf="this.authId == id" #form="ngForm">
+    <input name="text" [(ngModel)]="postText" type="text" class="posts__input" placeholder="What's happend...">
+    <input type="submit" class="posts__button" value="Post">
+  </form>
+  <div class="post" *ngFor="let post of posts">
+    <div class="post__remove" *ngIf="this.authId == id" (click)="removePost(post.id)">
+      <i class="material-icons">close</i>
+    </div>
+    <div class="post__text">{{ post.text }}</div>
+     <!-- post__likes--liked -->
+    <div class="post__likes" [class.post__likes--liked]="post.likes > 0">
+      <i class="material-icons">favorite_border</i>
+      <!-- <i class="material-icons">favorite</i> -->
+      <span *ngIf="post.likes > 0">{{ post.likes }}</span>
+    </div>
+  </div>
+</div>

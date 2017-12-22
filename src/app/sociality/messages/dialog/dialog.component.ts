@@ -16,6 +16,7 @@ import { LoaderService } from '../../../shared/services/loader.service';
    private messages;
    private id = localStorage.getItem('id');
    private messagesInterval;
+   private message = '';
    @ViewChild(ViewImageComponent) viewImage;
 
    constructor(private api: ApiService,

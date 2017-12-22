@@ -1,0 +1,100 @@
+@import 'colors.less';
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  box-shadow: 0 0 1px #ddd;
+
+  &__input {
+    display: flex;
+    width: 100%;
+    border: none;
+    height: 30px;
+    border-radius: 3px;
+    background: none;
+    margin-right: 10px;
+    padding: 0 10px;
+
+    &:focus {
+      background: #eee;
+    }
+  }
+
+  &__button {
+    background: @primary;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+    padding: 0 15px;
+    cursor: pointer;
+  }
+
+  &__create {
+    display: flex;
+    width: 100%;
+    border: none;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    height: 45px;
+    padding: 0 15px;
+  }
+}
+
+.post {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  flex-direction: column;
+  position: relative;
+
+  &__remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 10pt;
+    color: #aaa;
+    transition: .2s;
+    opacity: 0;
+
+    &:hover {
+      color: #777;
+    }
+  }
+
+  &:hover &__remove {
+    opacity: 1;
+  }
+
+  &__text {
+    padding: 10px 15px;
+  }
+
+  &__likes {
+    border-top: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    transition: .2s;
+    background: #f0f0f0;
+    cursor: pointer;
+
+    span {
+      margin-left: 5px;
+    }
+
+    &--liked {
+      background: #ff3333;
+      color: #fff;
+    }
+
+    &:not(&--liked):hover {
+      background: #f6f6f6;
+      color: #666;
+    }
+  }
+}
