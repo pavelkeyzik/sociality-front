@@ -33,7 +33,6 @@ export class PostsComponent {
       text: form.value.text,
 
     };
-    console.log(this.postText);
     if(this.postText != null)
     {
       let params = {

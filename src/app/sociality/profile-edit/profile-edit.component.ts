@@ -44,7 +44,7 @@ export class ProfileEditComponent {
   }
 
   onSubmit(form) {
-    let params = {};
+    let params;
 
     if(form.value.name != '')
       params.name = form.value.name;
